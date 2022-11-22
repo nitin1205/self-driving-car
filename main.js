@@ -1,23 +1,16 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import { setupCounter } from './counter.js'
+// console.log(myCanvas.getContext('2d'))
+// console.log(window)
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+const context = myCanvas.getContext('2d');
+console.log(context)
+const car = new Car(320, 320, 30, 50);
 
-setupCounter(document.querySelector('#counter'))
+render();
+
+function render(){
+  myCanvas.height = window.innerHeight;
+  myCanvas.width = window.innerWidth / 3
+  car.update()
+  car.draw(context);
+  requestAnimationFrame(render);
+}
